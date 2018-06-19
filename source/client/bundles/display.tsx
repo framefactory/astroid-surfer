@@ -8,10 +8,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import "./application.scss";
-import Application from "../components/Application";
+import "./controller.scss";
+import Canvas from "../components/Canvas";
 
 ReactDOM.render(
-    <Application/>,
+    <Canvas/>,
     document.getElementById("main")
 );

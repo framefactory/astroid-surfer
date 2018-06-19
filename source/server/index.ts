@@ -18,6 +18,8 @@ import * as cookieParser from "cookie-parser";
 import * as handlebars from "express-handlebars";
 import * as morgan from "morgan";
 
+import * as socketIo from "socket.io";
+
 ////////////////////////////////////////////////////////////////////////////////
 // APPLICATION SETUP
 
@@ -54,6 +56,34 @@ app.set("view engine", ".hbs");
 app.set("views", templateDir);
 
 ////////////////////////////////////////////////////////////////////////////////
+// Socket.io
+
+let io = socketIo(server);
+
+io.on('connection', function (socket) {
+
+    socket.on(
+        "controller", function (message) {
+            console.log(message);
+            switch (message){
+                case "click" : {
+                    const data = "do";
+                    socket.emit("display", data);
+                    break;
+                }
+                default : {
+                    console.log("invalid message");
+                    break;
+                }
+            }
+        }
+    );
+
+    console.log('a user connected');
+
+});
+
+////////////////////////////////////////////////////////////////////////////////
 // SERVER ROUTING
 
 // logging middleware
@@ -71,6 +101,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // index page
 app.get("/", (req: any, res) => {
     res.render("pages/application", { layout: null });
+});
+
+// index page
+app.get("/controller", (req: any, res) => {
+    res.render("pages/controller", { layout: null });
+});
+
+// index page
+app.get("/display", (req: any, res) => {
+    res.render("pages/display", { layout: null });
 });
 
 // serve static files

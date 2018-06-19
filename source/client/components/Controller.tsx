@@ -7,6 +7,7 @@
 
 import * as React from "react";
 import { CSSProperties } from "react";
+import * as io from "socket.io-client"
 import Canvas from "../components/Canvas";
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -19,6 +20,9 @@ export interface ApplicationProps
 
 export default class Application extends React.Component<ApplicationProps, {}>
 {
+
+    socket : any;
+
     static defaultProps: ApplicationProps = {
         className: "application"
     };
@@ -26,15 +30,24 @@ export default class Application extends React.Component<ApplicationProps, {}>
     constructor(props: ApplicationProps)
     {
         super(props);
+
+        this.onClick = this.onClick.bind(this);
+
     }
+
+    componentDidMount() {
+        this.socket = io();
+    }
+
+    onClick(){
+        console.log("Click!");
+        this.socket.emit('controller', "click");
+
+    }
+
 
     render()
     {
-        const {
-            className,
-            style,
-            children
-        } = this.props;
 
         const buttonStyle = {
             backgroundColor : "black",
@@ -44,25 +57,21 @@ export default class Application extends React.Component<ApplicationProps, {}>
             margin : "5px",
         };
 
-        return (
-            <div
-            className={className}
-            style={style}>
-            <h1>Welcome!</h1>
 
-            <a href={"/controller"}>
-                <button style={buttonStyle} >
-                    Controller
+        return(
+
+            <div>
+
+                <h1>Play!</h1>
+
+                <button style={buttonStyle} onClick={this.onClick} >
+                    Interact!
                 </button>
-            </a>
 
-            <a href={"/display"}>
-                <button style={buttonStyle} >
-                    Display
-                </button>
-            </a>
 
-            {children}
-        </div>);
+            </div>
+
+        );
+
     }
 }

@@ -9,9 +9,9 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import "./application.scss";
-import Application from "../components/Application";
+import Controller from "../components/Controller"
 
 ReactDOM.render(
-    <Application/>,
+    <Controller/>,
     document.getElementById("main")
 );

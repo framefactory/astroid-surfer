@@ -12,7 +12,10 @@ module.exports = {
     // The entry point tells webpack where to start
     // and follows the graph of dependencies to know what to bundle.
     entry: {
-        "application": path.resolve(__dirname, "bundles/application.tsx")
+        "application": path.resolve(__dirname, "bundles/application.tsx"),
+        "controller": path.resolve(__dirname, "bundles/controller.tsx"),
+        "display": path.resolve(__dirname, "bundles/display.tsx"),
+
     },
 
     output: {
