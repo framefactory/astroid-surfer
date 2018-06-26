@@ -1,2 +1,3 @@
-#fullstack-template
-Template for fullstack development with Typescript, React, WebGL/Three.js.
+#Astroid-Surfer
+
+A simple 3D game with WebGL/Three.js, React, Express.js, Socket.io and Typescript. 

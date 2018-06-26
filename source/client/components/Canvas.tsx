@@ -137,7 +137,6 @@ export default class ThreeScene extends React.Component<ApplicationProps, {}>
 
         this.asteroids = [];
 
-
         for ( let i = 0; i < numAsteroids; ++i) {
         	const asteroid = new THREE.DodecahedronBufferGeometry(1+Math.random()*3,0);
         	this.asteroids[i] = new THREE.Mesh(asteroid, mat);
