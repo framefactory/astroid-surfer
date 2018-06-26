@@ -61,28 +61,28 @@ app.set("views", templateDir);
 let io = socketIo(server);
 
 io.on('connection', function (socket) {
+	// Forward controller data to display
+	socket.removeAllListeners();
 
-    socket.on(
-        "controller", function (message) {
-            console.log(message);
-            switch (message){
-                case "click" : {
-                    const data = "do";
-                    socket.emit("display", data);
-                    break;
-                }
-                default : {
-                    console.log("invalid message");
-                    break;
-                }
-            }
-        }
-    );
+	socket.on(
+		"CT01-CS", message => {
+			socket.broadcast.emit("CT01-SC",message);
+			console.log(message);
+		}
+	);
+	socket.on(
+		"CT02-CS", message => {
+			socket.broadcast.emit("CT02-SC",message);
+		}
+	);
 
-    console.log('a user connected');
+	socket.on(
+		"DP01-CS", message => {
+			socket.broadcast.emit("DP01-SC",message);
+		}
+	);
 
 });
-
 ////////////////////////////////////////////////////////////////////////////////
 // SERVER ROUTING
 

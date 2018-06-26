@@ -1,7 +1,56 @@
 body {
+  background-color: #0c1623;
+  height: 100%;
+  width: 100%;
+  scroll : "no";
 
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  align-content: stretch;
+  height: 100vh;
+  overflow: hidden;
+  color: white;
+
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+
+  .fire{
+    flex : 1;
+    opacity: 0.5;
+    background: linear-gradient( #e3371f, #e33069);
+    transition: 0.01s;
+  }
+
+  .fire:active{
+    opacity: 1;
+  }
+
+  .acc{
+    flex: 1;
+    background: black;
+    transition: 0.5s;
+  }
+
+
+  .content{
+    display: grid;
+    height: 100%;
+    .text{
+      color: white;
+      margin: auto;
+    }
+  }
+}
+@media screen and(max-width: 600px){
+  .container{
+    height: 90vh;
+  }
+}
+
+

@@ -8,7 +8,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import "./application.scss";
+import "./controller.scss";
 import Controller from "../components/Controller"
 
 ReactDOM.render(

@@ -26,6 +26,7 @@ export default class Application extends React.Component<ApplicationProps, {}>
     constructor(props: ApplicationProps)
     {
         super(props);
+
     }
 
     render()
@@ -35,6 +36,7 @@ export default class Application extends React.Component<ApplicationProps, {}>
             style,
             children
         } = this.props;
+
 
         const buttonStyle = {
             backgroundColor : "black",
